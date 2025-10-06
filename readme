@@ -1,0 +1,14 @@
+//adicionar futuramente no json:
+
+"scripts": {
+  "start:emulator": "emulator -avd Medium_Phone_API_36_0",
+  "test:login": "ts-node test/specs/login.spec.ts"
+}
+
+//emulator -avd Medium_Phone_API_36_0
+
+
+
+// criar deeplinks para o app futuramente acessar as telas sem ter que fazer login toda vez.
+
+
