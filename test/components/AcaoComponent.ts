@@ -1,6 +1,6 @@
 import { getElementWhenDisplayed } from "../helpers/app.helper";
 
-export default class AcoesPage {
+export default class AcaoComponent {
   private driver: WebdriverIO.Browser;
 
   constructor(driver: WebdriverIO.Browser) {
@@ -31,32 +31,32 @@ export default class AcoesPage {
     return this.driver.$('//android.widget.TextView[@text="Stand"]');
   }
 
-  async clickAnotacao() {
+  async abrirNovaAnotacao() {
     const btn = await getElementWhenDisplayed(this.anotacaoBtn);
     await btn.click();
   }
 
-  async clickOcorrencia() {
+  async abrirNovaOcorrencia() {
     const btn = await getElementWhenDisplayed(this.ocorrenciaBtn);
     await btn.click();
   }
 
-  async clickRecomendacao() {
+  async abrirNovaRecomendacao() {
     const btn = await getElementWhenDisplayed(this.recomendacaoBtn);
     await btn.click();
   }
 
-  async clickAfericao() {
+  async abrirNovaAfericao() {
     const btn = await getElementWhenDisplayed(this.afericaoBtn);
     await btn.click();
   }
 
-  async clickAplicacao() {
+  async abrirNovaAplicacao() {
     const btn = await getElementWhenDisplayed(this.aplicacaoBtn);
     await btn.click();
   }
 
-  async clickStand() {
+  async abrirNovoStand() {
     const btn = await getElementWhenDisplayed(this.standBtn);
     await btn.click();
   }

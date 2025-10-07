@@ -1,26 +1,12 @@
-export default class MarcadorPage {
+// components/MarcadorComponent.ts
+import BotoesComponent from "./BotaoComponent";
+export default class MarcadorComponent {
   private driver: WebdriverIO.Browser;
+  private botoes: BotoesComponent;
 
   constructor(driver: WebdriverIO.Browser) {
     this.driver = driver;
-  }
-
-  // Botões
-  get btnCancelar() {
-    return this.driver.$('//android.widget.TextView[@text="Cancelar"]');
-  }
-
-  get btnConfirmar() {
-    return this.driver.$('//android.widget.TextView[@text=""]');
-  }
-
-  // Ações
-  async clicarCancelar() {
-    await this.btnCancelar.click();
-  }
-
-  async clicarConfirmar() {
-    await this.btnConfirmar.click();
+    this.botoes = new BotoesComponent(driver);
   }
 
   async arrastarMapa(startX: number, startY: number, endX: number, endY: number) {
@@ -39,5 +25,15 @@ export default class MarcadorPage {
       }
     ]);
     await this.driver.releaseActions();
+  }
+
+  // ——— Fluxo “tudo em um” (equivalente ao marker.helper.ts)
+  async posicionarESalvar() {
+    // primeiro arrasto
+    await this.arrastarMapa(500, 1000, 200, 1000);
+    // segundo arrasto
+    await this.arrastarMapa(200, 1000, 250, 1000);
+    // confirma
+    await this.botoes.clicarConfirmarVisto();
   }
 }

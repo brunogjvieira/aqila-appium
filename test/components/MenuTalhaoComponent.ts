@@ -1,6 +1,6 @@
 import { getElementWhenDisplayed } from "../helpers/app.helper";
 
-export default class MenuTalhaoPage {
+export default class MenuTalhaoComponent {
   private driver: WebdriverIO.Browser;
 
   constructor(driver: WebdriverIO.Browser) {
@@ -20,7 +20,7 @@ export default class MenuTalhaoPage {
     await btn.click();
   }
 
-  async clickAcoes() {
+  async entrarMenuAcoes() {
     const btn = await getElementWhenDisplayed(this.acoesBtn);
     await btn.click();
   }

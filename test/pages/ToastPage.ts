@@ -6,18 +6,18 @@ export default class MensagemPage {
   }
 
   // 🔹 Mensagem global de sucesso
-  get msgRegistroSalvo() {
+  get toastRegistroSalvo() {
     return this.driver.$('//android.widget.TextView[@text="Registro salvo com sucesso."]');
   }
 
-  async validarRegistroSalvo() {
-    const msg = await this.msgRegistroSalvo;
-    await msg.waitForDisplayed({ timeout: 5000 });
-    return msg.isDisplayed();
+  async isRegistroSalvoVisivel() {
+    const toast = await this.toastRegistroSalvo;
+    await toast.waitForDisplayed({ timeout: 5000 });
+    return toast.isDisplayed();
   }
 
   // 🔹 Exemplo: você pode adicionar outras mensagens globais depois
-  get msgErroGenerico() {
+  get toastErroGenerico() {
     return this.driver.$('//android.widget.TextView[contains(@text,"Erro")]');
   }
 }

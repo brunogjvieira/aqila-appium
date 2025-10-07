@@ -5,11 +5,7 @@
   "scripts": {
     "appium": "appium --base-path / --port 4723 --allow-insecure adb_shell",
     "start:emulator": "emulator -avd Pixel_3a -no-boot-anim -no-audio -no-snapshot -no-snapshot-load",
-    "start:emulator:headless": "emulator -avd Pixel_3a -no-window -no-audio -no-boot-anim",
     "wdio": "wdio run wdio.conf.ts",
-    "wdio:login-failure": "wdio run ./wdio.conf.ts --spec login-failure.spec.ts",
-    "wdio:login": "wdio run ./wdio.conf.ts --spec login.spec.ts",
-    "wdio:selectSafraPropriedade": "wdio run ./wdio.conf.ts --spec selectSafraPropriedade.spec.ts",
     "wdio:propriedade": "wdio run ./wdio.conf.ts --spec propriedade.spec.ts",
     "wdio:safra": "wdio run ./wdio.conf.ts --spec safra.spec.ts",
     "wdio:anotacao": "wdio run ./wdio.conf.ts --spec anotacao.spec.ts"

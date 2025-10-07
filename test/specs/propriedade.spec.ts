@@ -1,21 +1,21 @@
 import { PROPRIEDADES } from "../data/propriedades";
 import PropriedadePage from "../pages/PropriedadePage";
 import MenuPage from "../pages/MenuPage";
-import FiltroPage from "../pages/FiltroPage";
+import FiltroComponent from "../components/FiltroComponent";
 
 describe("Seleção de Propriedades", () => {
   let propriedadePage: PropriedadePage;
   let menuPage: MenuPage;
-  let filtroPage: FiltroPage;
+  let filtroComponent: FiltroComponent;
 
   before(async () => {
     propriedadePage = new PropriedadePage(browser);
     menuPage = new MenuPage(browser);
-    filtroPage = new FiltroPage(browser);
+    filtroComponent = new FiltroComponent(browser);
   });
 
   it("Deve selecionar Propriedade pela tela de Monitoria", async () => {
-    await propriedadePage.selectPropertyByMonitoryScreen(
+    await propriedadePage.selecionarPropriedadeNaMonitoria(
       PROPRIEDADES.default.name
     );
   });
@@ -23,8 +23,8 @@ describe("Seleção de Propriedades", () => {
   it("Deve selecionar uma Propriedade pelo menu lateral através do uso do filtro", async () => {
     await menuPage.openMenu();
     await menuPage.openSelectPropriedade();
-    const propertyText = await propriedadePage.getPropertyName(5);
-    await filtroPage.search(propertyText);
-    await propriedadePage.clickFilteredProperty(propertyText);
+    const propertyText = await propriedadePage.getPropriedadeNomePorIndice(5);
+    await filtroComponent.search(propertyText);
+    await propriedadePage.clicarPropriedadeFiltrada(propertyText);
   });
 });

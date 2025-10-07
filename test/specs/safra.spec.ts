@@ -1,15 +1,15 @@
 import MenuPage from "../pages/MenuPage";
-import FiltroPage from "../pages/FiltroPage";
+import FiltroComponent from "../components/FiltroComponent";
 import SafraPage from "../pages/SafraPage";
 
 describe("Selecionar Propriedades e Safras", () => {
   let menuPage: MenuPage;
-  let filterPage: FiltroPage;
+  let filtroComponent: FiltroComponent;
   let safraPage: SafraPage;
 
   before(async () => {
     menuPage = new MenuPage(browser);
-    filterPage = new FiltroPage(browser);
+    filtroComponent = new FiltroComponent(browser);
     safraPage = new SafraPage(browser);
   });
 
@@ -21,7 +21,7 @@ describe("Selecionar Propriedades e Safras", () => {
     const initialCount = await safraPage.getSafrasCount();
     expect(initialCount).toBe(5);
 
-    await filterPage.search(safraName);
+    await filtroComponent.search(safraName);
     await safraPage.clickFilteredSafra(safraName);
     await safraPage.clickPeriodoByIndex(2);
   });

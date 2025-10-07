@@ -1,7 +1,4 @@
-import {
-  getElementWhenDisplayed,
-  getTextWhenDisplayed,
-} from "../helpers/app.helper";
+import { getElementWhenDisplayed } from "../helpers/app.helper";
 
 export default class PropriedadePage {
   private driver: WebdriverIO.Browser;
@@ -10,53 +7,51 @@ export default class PropriedadePage {
     this.driver = driver;
   }
 
-get selectPropertyText() {
-  return this.driver.$(
-    '//android.view.ViewGroup[contains(@content-desc,"Selecione a propriedade") or contains(@content-desc,"AG")]'
-  );
-}
-
-
-  async waitForSelectPropertyText() {
-    return await getElementWhenDisplayed(this.selectPropertyText);
+  get campoSelecionePropriedade() {
+    return this.driver.$(
+      '//android.view.ViewGroup[contains(@content-desc,"Selecione a propriedade") or contains(@content-desc,"AG")]'
+    );
   }
 
-  getProperty(index: number | string) {
+  async aguardarCampoSelecionePropriedade() {
+    return await getElementWhenDisplayed(this.campoSelecionePropriedade);
+  }
+
+  propriedadePorIndice(index: number | string) {
     return this.driver.$(
       `(//android.view.ViewGroup[@resource-id="padView"])[${index}]`
     );
   }
 
-  async waitForProperty(index: number | string) {
-    const element = await this.getProperty(index);
+  async aguardarPropriedadePorIndice(index: number | string) {
+    const element = await this.propriedadePorIndice(index);
     return await getElementWhenDisplayed(element);
   }
 
-  async clickFilteredProperty(propertyText: string) {
-    const filteredProperty = await this.driver.$(
+  async clicarPropriedadeFiltrada(propertyText: string) {
+    const propriedadeFiltrada = await this.driver.$(
       `(//android.view.ViewGroup[@resource-id="padView"]//android.widget.TextView[@text="${propertyText}"])`
     );
-    await filteredProperty.waitForDisplayed({ timeout: 5000 });
-    await filteredProperty.click();
+    await propriedadeFiltrada.waitForDisplayed({ timeout: 5000 });
+    await propriedadeFiltrada.click();
   }
 
-  async getPropertyName(index: number | string) {
-    const property = await this.getProperty(index);
-    const nameElement = await property.$(
+  async getPropriedadeNomePorIndice(index: number | string) {
+    const propriedade = await this.aguardarPropriedadePorIndice(index);
+    const nomePropriedade = await propriedade.$(
       './/android.widget.TextView[@resource-id="listItemTitle"]'
     );
-    return await nameElement.getText();
+    return await nomePropriedade.getText();
   }
 
-  async selectPropertyByMonitoryScreen(nome: string) {
-    // espera o botão "Selecione a propriedade"
-    const element = await this.waitForSelectPropertyText();
+  async selecionarPropriedadeNaMonitoria(nome: string) {
+    const element = await this.aguardarCampoSelecionePropriedade();
     await element.click();
 
-   const property = await this.driver.$(
-    `//android.widget.TextView[@resource-id="listItemTitle" and @text="${nome}"]`
-  );
-  await property.waitForDisplayed({ timeout: 5000 });
-  await property.click();
+    const propriedade = await this.driver.$(
+      `//android.widget.TextView[@resource-id="listItemTitle" and @text="${nome}"]`
+    );
+    await propriedade.waitForDisplayed({ timeout: 5000 });
+    await propriedade.click();
   }
 }
