@@ -1,6 +1,6 @@
 import { getElementWhenDisplayed } from "../helpers/app.helper";
 
-export default class MenuPage {
+export default class MenuLateralComponent {
   private driver: WebdriverIO.Browser;
 
   constructor(driver: WebdriverIO.Browser) {

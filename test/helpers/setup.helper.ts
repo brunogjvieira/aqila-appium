@@ -1,6 +1,6 @@
 import PropriedadePage from "../pages/PropriedadePage";
 import SafraPage from "../pages/SafraPage";
-import MenuPage from "../pages/MenuPage";
+import MenuLateralComponent from "../components/MenuLateralComponent";
 import MonitoriaPage from "../pages/MonitoriaPage";
 import FiltroComponent from "../components/FiltroComponent";
 import { PROPRIEDADES } from "../data/propriedades";
@@ -9,7 +9,7 @@ import { PERIODOS } from "../data/periodos";
 export async function selecionarPropriedadeESafra() {
   const propriedadePage = new PropriedadePage(browser);
   const safraPage = new SafraPage(browser);
-  const menuPage = new MenuPage(browser);
+  const menuLateralComponent = new MenuLateralComponent(browser);
 
   await propriedadePage.selecionarPropriedadeNaMonitoria(PROPRIEDADES.default.name);
 
@@ -23,8 +23,8 @@ export async function selecionarPropriedadeESafra() {
   if (onSafraScreen) {
     await selecionarSafraEPeriodo();
   } else {
-    await menuPage.openMenu();
-    await menuPage.openSelectSafra();
+    await menuLateralComponent.openMenu();
+    await menuLateralComponent.openSelectSafra();
     await selecionarSafraEPeriodo();
   }
 }

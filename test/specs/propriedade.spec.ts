@@ -1,16 +1,16 @@
 import { PROPRIEDADES } from "../data/propriedades";
 import PropriedadePage from "../pages/PropriedadePage";
-import MenuPage from "../pages/MenuPage";
+import MenuLateralComponent from "../components/MenuLateralComponent";
 import FiltroComponent from "../components/FiltroComponent";
 
 describe("Seleção de Propriedades", () => {
   let propriedadePage: PropriedadePage;
-  let menuPage: MenuPage;
+  let menuLateralComponent: MenuLateralComponent;
   let filtroComponent: FiltroComponent;
 
   before(async () => {
     propriedadePage = new PropriedadePage(browser);
-    menuPage = new MenuPage(browser);
+    menuLateralComponent = new MenuLateralComponent(browser);
     filtroComponent = new FiltroComponent(browser);
   });
 
@@ -21,8 +21,8 @@ describe("Seleção de Propriedades", () => {
   });
 
   it("Deve selecionar uma Propriedade pelo menu lateral através do uso do filtro", async () => {
-    await menuPage.openMenu();
-    await menuPage.openSelectPropriedade();
+    await menuLateralComponent.openMenu();
+    await menuLateralComponent.openSelectPropriedade();
     const propertyText = await propriedadePage.getPropriedadeNomePorIndice(5);
     await filtroComponent.search(propertyText);
     await propriedadePage.clicarPropriedadeFiltrada(propertyText);
