@@ -21,13 +21,16 @@ export default class SafraPage {
     return await getElementWhenDisplayed(this.safraAtualElement);
   }
 
- async isOnSafraScreen(timeout = 1500): Promise<boolean> {
-  return this.safraAtualElement.waitForExist({ timeout }).then(() => true).catch(() => false);
-}
+  async isOnSafraScreen(timeout = 1500): Promise<boolean> {
+    return this.safraAtualElement
+      .waitForExist({ timeout })
+      .then(() => true)
+      .catch(() => false);
+  }
 
-async validarSafraSelecionada(nomeSafra: string) {
+  async validarSafraSelecionada(nomeSafra: string) {
     const safra = await this.driver.$(
-       `//android.widget.TextView[contains(@text, "${nomeSafra}")]`
+      `//android.widget.TextView[contains(@text, "${nomeSafra}")]`
     );
     try {
       await safra.waitForExist({ timeout: 2000 });
@@ -37,16 +40,15 @@ async validarSafraSelecionada(nomeSafra: string) {
     }
   }
 
- get fecharBtn() {
-  return this.driver.$(
-    '//android.widget.TextView[@text="Safras"]/../preceding-sibling::android.view.ViewGroup[1]//android.widget.Button'
-  );
-}
+  get fecharBtn() {
+    return this.driver.$(
+      '//android.widget.TextView[@text="Safras"]/../preceding-sibling::android.view.ViewGroup[1]//android.widget.Button'
+    );
+  }
 
-async fecharSafras() {
-      await this.fecharBtn.click();
-
-}
+  async fecharSafras() {
+    await this.fecharBtn.click();
+  }
 
   async getSafraAtualName() {
     const safraAtual = await this.waitForSafraAtual();
@@ -87,13 +89,12 @@ async fecharSafras() {
   }
 
   async clickPeriodoByName(nome: string) {
-  const periodo = await this.driver.$(
-    `//android.widget.TextView[@resource-id="listItemTitle" and @text="${nome}"]`
-  );
-  await periodo.waitForDisplayed({ timeout: 5000 });
-  await periodo.click();
-}
-
+    const periodo = await this.driver.$(
+      `//android.widget.TextView[@resource-id="listItemTitle" and @text="${nome}"]`
+    );
+    await periodo.waitForDisplayed({ timeout: 5000 });
+    await periodo.click();
+  }
 
   async waitForSafraByIndex(index: number | string) {
     const safra = await this.getSafraByIndex(index);
