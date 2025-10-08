@@ -25,6 +25,18 @@ export default class SafraPage {
   return this.safraAtualElement.waitForExist({ timeout }).then(() => true).catch(() => false);
 }
 
+async validarSafraSelecionada(nomeSafra: string) {
+    const safra = await this.driver.$(
+       `//android.widget.TextView[contains(@text, "${nomeSafra}")]`
+    );
+    try {
+      await safra.waitForExist({ timeout: 2000 });
+      return await getElementWhenDisplayed(safra);
+    } catch (error) {
+      return false;
+    }
+  }
+
  get fecharBtn() {
   return this.driver.$(
     '//android.widget.TextView[@text="Safras"]/../preceding-sibling::android.view.ViewGroup[1]//android.widget.Button'

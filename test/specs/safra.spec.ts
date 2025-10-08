@@ -31,7 +31,7 @@ describe("Selecionar Propriedades e Safras", () => {
     await menuLateralComponent.openSelectSafra();
 
     await safraPage.clickExibirTodas();
-    await driver.pause(1000); // se der flaky, trocar por um waitFor específico
+    await driver.pause(1000);
     const allCount = await safraPage.getSafrasCount();
     expect(allCount).toBeGreaterThan(5);
   });

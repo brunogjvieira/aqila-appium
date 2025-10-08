@@ -10,8 +10,13 @@ export async function selecionarPropriedadeESafra() {
   const propriedadePage = new PropriedadePage(browser);
   const safraPage = new SafraPage(browser);
   const menuLateralComponent = new MenuLateralComponent(browser);
+  const propriedadeAtual = await  propriedadePage.validarPropriedadeSelecionada(PROPRIEDADES.default.name);
+  const safraAtual = await safraPage.validarSafraSelecionada(PERIODOS.default.inverno);
 
-  await propriedadePage.selecionarPropriedadeNaMonitoria(PROPRIEDADES.default.name);
+  if(propriedadeAtual && safraAtual) {
+    console.log('aqui')
+  } else {
+      await propriedadePage.selecionarPropriedadeNaMonitoria(PROPRIEDADES.default.name);
 
   const onSafraScreen = await safraPage.isOnSafraScreen();
   const selecionarSafraEPeriodo = async () => {
@@ -26,6 +31,7 @@ export async function selecionarPropriedadeESafra() {
     await menuLateralComponent.openMenu();
     await menuLateralComponent.openSelectSafra();
     await selecionarSafraEPeriodo();
+  }
   }
 }
 

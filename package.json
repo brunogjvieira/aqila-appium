@@ -8,7 +8,8 @@
     "wdio": "wdio run wdio.conf.ts",
     "wdio:propriedade": "wdio run ./wdio.conf.ts --spec propriedade.spec.ts",
     "wdio:safra": "wdio run ./wdio.conf.ts --spec safra.spec.ts",
-    "wdio:anotacao": "wdio run ./wdio.conf.ts --spec anotacao.spec.ts"
+    "wdio:anotacao": "wdio run ./wdio.conf.ts --spec anotacao.spec.ts",
+    "wdio:ocorrencia": "wdio run ./wdio.conf.ts --spec ocorrencia.spec.ts"
   },
   "keywords": [],
   "author": "",

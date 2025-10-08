@@ -23,6 +23,18 @@ export default class PropriedadePage {
     );
   }
 
+  async validarPropriedadeSelecionada(nomePropriedade: string) {
+    const propriedade = await this.driver.$(
+      `//android.widget.TextView[@text="${nomePropriedade}"]`
+    );
+    try {
+      await propriedade.waitForExist({ timeout: 2000 });
+      return await getElementWhenDisplayed(propriedade);
+    } catch (error) {
+      return false;
+    }
+  }
+
   async aguardarPropriedadePorIndice(index: number | string) {
     const element = await this.propriedadePorIndice(index);
     return await getElementWhenDisplayed(element);

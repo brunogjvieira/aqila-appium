@@ -1,3 +1,11 @@
+Vou falar sobre a arquitetura do projeto primeiro, então os testes ocorrem no specfile e dentro dos specfile temos as suites de testes que são os describes e os its.
+Estamos utilizando o appium como server e conector com o nosso webdriver que é o wdio, onde ele vai fazer as ações nos devices.
+Foi criado a pasta test e dentro dela separamos em componentes coisas como toast, buttons e outros componentes reutilizaveis.
+data para definir os dados que vão ser utilizados nos testes
+helpers para funcoes reutilizaveis por exemplo o auth, setup para os testes, lidar com modais, funcoes para lidar com o gerenciamento da sessão, restart app e etc.
+page a gente definiu como POM onde vai ta os getters e os metodos de cada tela
+
+
 //adicionar futuramente no json:
 
 "scripts": {

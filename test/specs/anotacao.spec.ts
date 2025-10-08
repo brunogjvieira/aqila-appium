@@ -5,11 +5,9 @@ import AcaoComponent from "../components/AcaoComponent";
 import BotaoComponent from "../components/BotaoComponent";
 import AnotacaoPage from "../pages/AnotacaoPage";
 import ToastComponent from "../components/ToastComponent";
-import MarcadorComponent from "../components/marcadorComponent";
-import {
-  selecionarPropriedadeESafra,
-  selecionarTalhaoPorBusca,
-} from "../helpers/setup.helper";
+import MarcadorComponent from "../components/MarcadorComponent";
+import { TOASTS } from "../data/toast";
+import { selecionarPropriedadeESafra, selecionarTalhaoPorBusca } from "../helpers/setup.helper";
 
 describe("Validação da tela de Anotação", () => {
   let menuTalhaoComponent: MenuTalhaoComponent;
@@ -41,6 +39,6 @@ describe("Validação da tela de Anotação", () => {
     );
 
     await marcadorComponent.posicionarESalvar();
-    expect(await toastComponent.toastSucessoGenerico("Registro salvo com sucesso.")).toBe(true);
+    expect(await toastComponent.toastSucessoGenerico(TOASTS.sucesso.registroSalvo)).toBe(true);
   });
 });
