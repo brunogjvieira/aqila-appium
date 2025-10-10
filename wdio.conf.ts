@@ -11,7 +11,7 @@ export const config: any = {
   capabilities: [
     {
       platformName: "Android",
-      "appium:deviceName": "Android Device", // 'appium:deviceName': 'emulator-5554',
+      "appium:deviceName": "emulator-5554", // 'appium:deviceName': 'emulator-5554', // Android Device
       "appium:automationName": "UiAutomator2",
       "appium:app": "./app-staging.apk",
       "appium:autoGrantPermissions": true,

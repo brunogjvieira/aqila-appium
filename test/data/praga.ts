@@ -1,3 +1,7 @@
 export const PRAGAS = {
-    default: "Ammi",
+  invasora: {
+    nome: "Ammi",
+    quantidade: "2",
+    observacao: "auto",
+  },
 };

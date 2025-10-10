@@ -1,5 +1,5 @@
 import { TALHOES } from "../data/talhoes";
-import { ANOTACOES } from "../data/anotacoes";
+import { PLANTIO } from "../data/plantio";
 import MenuTalhaoComponent from "../components/MenuTalhaoComponent";
 import AcaoComponent from "../components/AcaoComponent";
 import BotaoComponent from "../components/BotaoComponent";
@@ -33,9 +33,9 @@ describe("Validação da tela de Anotação", () => {
     await acaoComponent.abrirNovaAnotacao();
 
     await anotacaoPage.criarAnotacao(
-      ANOTACOES.default.atividade,
-      ANOTACOES.default.estadio,
-      ANOTACOES.default.observacao
+      PLANTIO.atividade,
+      PLANTIO.estadio,
+      PLANTIO.observacao
     );
 
     await marcadorComponent.posicionarESalvar();

@@ -27,7 +27,7 @@ get emailField() {
     return this.driver.$('android=new UiSelector().descriptionContains("Entrar")');
   }
 
-  async isOnLoginScreen(timeout = 1500): Promise<boolean> {
+  async isOnLoginScreen(timeout = 1000): Promise<boolean> {
   return this.loginButton.waitForExist({ timeout }).then(() => true).catch(() => false);
 }
 

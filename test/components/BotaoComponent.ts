@@ -22,6 +22,14 @@ export default class BotoesComponent {
     return this.driver.$('//android.widget.TextView[@text=""]');
   }
 
+  get botaoProximoPasso() {
+    return this.driver.$('//android.widget.Button[@content-desc=""]');
+  }
+
+  async clicarBotaoProximoPasso(){
+    await this.botaoProximoPasso.click();
+  }
+
   async clicarSalvar() {
     await this.botaoSalvarTexto.waitForDisplayed({ timeout: 5000 });
     await this.botaoSalvarTexto.click();
